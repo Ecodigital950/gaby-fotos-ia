@@ -245,13 +245,23 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);-webkit-fo
 .test-photo-card{
   border-radius:var(--r-lg);
   overflow:hidden;
-  aspect-ratio:4/3;
   border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(160deg,#26273a 0%,#181929 100%);
   width:100%;
+  aspect-ratio:3/4;
+  background:var(--bg-card);
 }
-.test-photo-card .ba-placeholder{opacity:.3}
+.test-photo-card img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.test-photo-card .ba-placeholder{opacity:.3;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem}
+
+/* AUDIO GRID */
+.audio-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.audio-card{margin-top:0;max-width:none}
+.audio-card.playing .play-btn{background:rgba(212,168,67,.15);color:var(--gold)}
+.audio-card.playing .wbar{background:var(--gold)}
+
+/* VIDEO */
+.video-card{margin-top:1.5rem;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);background:#000}
+.video-card video{width:100%;display:block;max-height:560px}
 
 /* AUDIO */
 .audio-card{margin-top:2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.25rem 1.75rem;display:flex;align-items:center;gap:1.25rem;max-width:380px;cursor:pointer;transition:border-color .3s}
@@ -491,21 +501,20 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);-webkit-fo
     <h2 class="sec-title reveal">O que as pessoas falam dos nossos ensaios com IA</h2>
 
     <div class="carousel-wrap reveal">
-      <div class="test-slide active" id="ts0">
-        <div class="test-photo-card">
-          <div class="ba-placeholder"><div class="ba-placeholder-icon">🖼️</div><p class="ba-placeholder-txt">Foto do depoimento</p></div>
-        </div>
-      </div>
-      <div class="test-slide" id="ts1">
-        <div class="test-photo-card">
-          <div class="ba-placeholder"><div class="ba-placeholder-icon">🖼️</div><p class="ba-placeholder-txt">Foto do depoimento</p></div>
-        </div>
-      </div>
-      <div class="test-slide" id="ts2">
-        <div class="test-photo-card">
-          <div class="ba-placeholder"><div class="ba-placeholder-icon">🖼️</div><p class="ba-placeholder-txt">Foto do depoimento</p></div>
-        </div>
-      </div>
+      <div class="test-slide active" id="ts0"><div class="test-photo-card"><img src="images/dep-01.webp" alt="Depoimento 1" width="600" height="800" loading="eager"></div></div>
+      <div class="test-slide" id="ts1"><div class="test-photo-card"><img src="images/dep-02.webp" alt="Depoimento 2" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts2"><div class="test-photo-card"><img src="images/dep-03.webp" alt="Depoimento 3" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts3"><div class="test-photo-card"><img src="images/dep-04.webp" alt="Depoimento 4" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts4"><div class="test-photo-card"><img src="images/dep-05.webp" alt="Depoimento 5" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts5"><div class="test-photo-card"><img src="images/dep-06.webp" alt="Depoimento 6" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts6"><div class="test-photo-card"><img src="images/dep-07.webp" alt="Depoimento 7" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts7"><div class="test-photo-card"><img src="images/dep-08.webp" alt="Depoimento 8" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts8"><div class="test-photo-card"><img src="images/dep-09.webp" alt="Depoimento 9" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts9"><div class="test-photo-card"><img src="images/dep-10.webp" alt="Depoimento 10" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts10"><div class="test-photo-card"><img src="images/dep-11.webp" alt="Depoimento 11" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts11"><div class="test-photo-card"><img src="images/dep-12.webp" alt="Depoimento 12" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts12"><div class="test-photo-card"><img src="images/dep-13.webp" alt="Depoimento 13" width="600" height="800" loading="lazy"></div></div>
+      <div class="test-slide" id="ts13"><div class="test-photo-card"><img src="images/dep-14.webp" alt="Depoimento 14" width="600" height="800" loading="lazy"></div></div>
       <div class="carousel-nav">
         <button class="carousel-btn" onclick="tsCarousel(-1)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
@@ -517,17 +526,41 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);-webkit-fo
       </div>
     </div>
 
-    <div class="audio-card reveal">
-      <div class="play-btn">▶</div>
-      <div class="audio-info">
-        <div class="audio-title">Áudio de cliente</div>
-        <div class="waveform">
-          <div class="wbar"></div><div class="wbar"></div><div class="wbar"></div>
-          <div class="wbar"></div><div class="wbar"></div><div class="wbar"></div>
-          <div class="wbar"></div><div class="wbar"></div><div class="wbar"></div>
-          <div class="wbar"></div>
+    <div class="audio-grid reveal">
+      <div class="audio-card" onclick="playAudio(this,'audio/audio-1.mp3')">
+        <div class="play-btn">▶</div>
+        <div class="audio-info">
+          <div class="audio-title">Áudio de cliente 1</div>
+          <div class="waveform"><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div></div>
         </div>
       </div>
+      <div class="audio-card" onclick="playAudio(this,'audio/audio-2.mp3')">
+        <div class="play-btn">▶</div>
+        <div class="audio-info">
+          <div class="audio-title">Áudio de cliente 2</div>
+          <div class="waveform"><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div></div>
+        </div>
+      </div>
+      <div class="audio-card" onclick="playAudio(this,'audio/audio-3.mp3')">
+        <div class="play-btn">▶</div>
+        <div class="audio-info">
+          <div class="audio-title">Áudio de cliente 3</div>
+          <div class="waveform"><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div></div>
+        </div>
+      </div>
+      <div class="audio-card" onclick="playAudio(this,'audio/audio-4.mp3')">
+        <div class="play-btn">▶</div>
+        <div class="audio-info">
+          <div class="audio-title">Áudio de cliente 4</div>
+          <div class="waveform"><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div><div class="wbar"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card reveal">
+      <video src="video/depoimento-1.mp4" controls preload="none" width="100%">
+        Seu navegador não suporta vídeo HTML5.
+      </video>
     </div>
   </div>
 </div>
@@ -656,6 +689,31 @@ function tsGo(n) {
 }
 function tsCarousel(dir) { tsGo(tsCur + dir); }
 setInterval(() => tsCarousel(1), 2000);
+
+/* ── AUDIO CARDS ── */
+let _audio = null, _audioCard = null;
+function playAudio(card, src) {
+  if (_audioCard && _audioCard !== card) {
+    _audio.pause();
+    _audioCard.classList.remove('playing');
+    _audioCard.querySelector('.play-btn').textContent = '▶';
+  }
+  if (!_audio || _audioCard !== card) {
+    if (!_audio || _audioCard !== card) { _audio = new Audio(src); _audioCard = card; }
+    _audio.play();
+    card.classList.add('playing');
+    card.querySelector('.play-btn').textContent = '⏸';
+    _audio.onended = () => { card.classList.remove('playing'); card.querySelector('.play-btn').textContent = '▶'; };
+  } else if (_audio.paused) {
+    _audio.play();
+    card.classList.add('playing');
+    card.querySelector('.play-btn').textContent = '⏸';
+  } else {
+    _audio.pause();
+    card.classList.remove('playing');
+    card.querySelector('.play-btn').textContent = '▶';
+  }
+}
 
 /* ── QUIZ ── */
 const ans = { profissao:'', estilo:'', nome:'' };

@@ -198,19 +198,46 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);-webkit-fo
   flex-shrink:0;
 }
 
-/* TESTIMONIALS CAROUSEL */
-.test-slide{display:none}
-.test-slide.active{display:block;animation:cin .5s ease}
-.test-photo-card{
+/* TESTIMONIALS GRID */
+.ts-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.5rem;
+  margin-top:2.5rem;
+}
+.ts-pair{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.375rem;
   border-radius:var(--r-lg);
   overflow:hidden;
-  aspect-ratio:4/3;
   border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(160deg,#26273a 0%,#181929 100%);
-  width:100%;
 }
-.test-photo-card .ba-placeholder{opacity:.3}
+.ts-photo{
+  position:relative;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:var(--bg-card);
+}
+.ts-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.ts-photo-ph{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--bg-card);
+  color:var(--text-dim);
+  font-size:.75rem;
+}
+.ts-lbl{
+  position:absolute;
+  bottom:.5rem;left:.5rem;
+  font-size:.6rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(13,14,26,.8);
+  color:var(--text-muted);
+  padding:.2rem .45rem;
+  border-radius:.25rem;
+}
+.ts-lbl--depois{color:var(--gold)}
 
 /* AUDIO */
 .audio-card{margin-top:2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.25rem 1.75rem;display:flex;align-items:center;gap:1.25rem;max-width:380px;cursor:pointer;transition:border-color .3s}
@@ -284,7 +311,7 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);-webkit-fo
   .steps-tl{max-width:100%}
 }
 @media(max-width:768px){
-  .test-slide.active{grid-template-columns:1fr}
+  .ts-grid{grid-template-columns:1fr}
   .nav{padding:1rem 1.25rem}
   .hero{padding:7rem 1.25rem 4rem}
   .section{padding:5rem 1.25rem}
@@ -437,31 +464,74 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);-webkit-fo
     <span class="sec-label reveal">Depoimentos</span>
     <h2 class="sec-title reveal">O que as pessoas falam dos nossos ensaios com IA</h2>
 
-    <div class="carousel-wrap reveal">
-      <div class="test-slide active" id="ts0">
-        <div class="test-photo-card">
-          <div class="ba-placeholder"><div class="ba-placeholder-icon">🖼️</div><p class="ba-placeholder-txt">Foto do depoimento</p></div>
+    <div class="ts-grid reveal">
+
+      <div class="ts-pair">
+        <div class="ts-photo">
+          <img src="images/ts-1a.webp" alt="Antes" width="300" height="400" loading="lazy">
+          <span class="ts-lbl">Antes</span>
+        </div>
+        <div class="ts-photo">
+          <img src="images/ts-1b.webp" alt="Depois" width="300" height="400" loading="lazy">
+          <span class="ts-lbl ts-lbl--depois">Depois</span>
         </div>
       </div>
-      <div class="test-slide" id="ts1">
-        <div class="test-photo-card">
-          <div class="ba-placeholder"><div class="ba-placeholder-icon">🖼️</div><p class="ba-placeholder-txt">Foto do depoimento</p></div>
+
+      <div class="ts-pair">
+        <div class="ts-photo">
+          <img src="images/ts-2a.webp" alt="Antes" width="300" height="400" loading="lazy">
+          <span class="ts-lbl">Antes</span>
+        </div>
+        <div class="ts-photo">
+          <img src="images/ts-2b.webp" alt="Depois" width="300" height="400" loading="lazy">
+          <span class="ts-lbl ts-lbl--depois">Depois</span>
         </div>
       </div>
-      <div class="test-slide" id="ts2">
-        <div class="test-photo-card">
-          <div class="ba-placeholder"><div class="ba-placeholder-icon">🖼️</div><p class="ba-placeholder-txt">Foto do depoimento</p></div>
+
+      <div class="ts-pair">
+        <div class="ts-photo">
+          <img src="images/ts-3a.webp" alt="Antes" width="300" height="400" loading="lazy">
+          <span class="ts-lbl">Antes</span>
+        </div>
+        <div class="ts-photo">
+          <img src="images/ts-3b.webp" alt="Depois" width="300" height="400" loading="lazy">
+          <span class="ts-lbl ts-lbl--depois">Depois</span>
         </div>
       </div>
-      <div class="carousel-nav">
-        <button class="carousel-btn" onclick="tsCarousel(-1)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        </button>
-        <div class="c-dots" id="tsDots"></div>
-        <button class="carousel-btn" onclick="tsCarousel(1)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
+
+      <div class="ts-pair">
+        <div class="ts-photo">
+          <img src="images/ts-4a.webp" alt="Antes" width="300" height="400" loading="lazy">
+          <span class="ts-lbl">Antes</span>
+        </div>
+        <div class="ts-photo">
+          <img src="images/ts-4b.webp" alt="Depois" width="300" height="400" loading="lazy">
+          <span class="ts-lbl ts-lbl--depois">Depois</span>
+        </div>
       </div>
+
+      <div class="ts-pair">
+        <div class="ts-photo">
+          <img src="images/ts-5a.webp" alt="Antes" width="300" height="400" loading="lazy">
+          <span class="ts-lbl">Antes</span>
+        </div>
+        <div class="ts-photo">
+          <img src="images/ts-5b.webp" alt="Depois" width="300" height="400" loading="lazy">
+          <span class="ts-lbl ts-lbl--depois">Depois</span>
+        </div>
+      </div>
+
+      <div class="ts-pair">
+        <div class="ts-photo">
+          <img src="images/ts-6a.webp" alt="Antes" width="300" height="400" loading="lazy">
+          <span class="ts-lbl">Antes</span>
+        </div>
+        <div class="ts-photo">
+          <img src="images/ts-6b.webp" alt="Depois" width="300" height="400" loading="lazy">
+          <span class="ts-lbl ts-lbl--depois">Depois</span>
+        </div>
+      </div>
+
     </div>
 
     <div class="audio-card reveal">
@@ -584,25 +654,6 @@ function baGo(n) {
 function baCarousel(dir) { baGo(baCur + dir); }
 setInterval(() => baCarousel(1), 1500);
 
-/* ── CAROUSEL DEPOIMENTOS (2s) ── */
-const tsSlides = document.querySelectorAll('.test-slide');
-let tsCur = 0;
-const tsDotsEl = document.getElementById('tsDots');
-tsSlides.forEach((_,i) => {
-  const d = document.createElement('div');
-  d.className = 'c-dot' + (i===0?' on':'');
-  d.onclick = () => tsGo(i);
-  tsDotsEl.appendChild(d);
-});
-function tsGo(n) {
-  tsSlides[tsCur].classList.remove('active');
-  tsDotsEl.children[tsCur].classList.remove('on');
-  tsCur = (n + tsSlides.length) % tsSlides.length;
-  tsSlides[tsCur].classList.add('active');
-  tsDotsEl.children[tsCur].classList.add('on');
-}
-function tsCarousel(dir) { tsGo(tsCur + dir); }
-setInterval(() => tsCarousel(1), 2000);
 
 /* ── QUIZ ── */
 const ans = { profissao:'', estilo:'', nome:'' };
